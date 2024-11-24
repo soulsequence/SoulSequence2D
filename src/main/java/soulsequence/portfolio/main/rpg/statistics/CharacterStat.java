@@ -61,6 +61,6 @@ public class CharacterStat {
             }
         }
         // TODO: examine how this interacts with the final values.
-        return Math.round(finalValue * 100) / 100.0f;
+        return (float) Math.round(finalValue * 10000) / 10000;
     }
 }
