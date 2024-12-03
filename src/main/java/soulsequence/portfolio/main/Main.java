@@ -1,5 +1,7 @@
 package soulsequence.portfolio.main;
 
+import soulsequence.portfolio.graphics.GamePanel;
+
 import javax.swing.*;
 
 public class Main {

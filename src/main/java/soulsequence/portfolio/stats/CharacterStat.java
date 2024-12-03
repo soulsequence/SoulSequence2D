@@ -1,4 +1,4 @@
-package soulsequence.portfolio.main.rpg.statistics;
+package soulsequence.portfolio.stats;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package soulsequence.portfolio.main.rpg.statistics;
+package soulsequence.portfolio.stats;
 
 public enum StatModType {
     Flat,

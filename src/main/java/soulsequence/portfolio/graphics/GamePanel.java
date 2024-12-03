@@ -1,4 +1,7 @@
-package soulsequence.portfolio.main;
+package soulsequence.portfolio.graphics;
+
+import soulsequence.portfolio.game.entity.Player;
+import soulsequence.portfolio.input.KeyHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,20 +12,22 @@ public class GamePanel extends JPanel implements Runnable {
     private static final Logger LOGGER = Logger.getLogger(GamePanel.class.getName());
 
     // SCREEN SETTINGS
-    final int originalTileSize = 36; // 36x36 tile
-    final int scale = 2;
+    private final int originalTileSize = 36; // 16x16 tile
+    private final int scale = 2;
 
-    final int tileSize = originalTileSize * scale; // 72x72 tile
-    final int maxScreenCol = 16;
-    final int maxScreenRow = 12;
-    final int screenWidth = tileSize * maxScreenCol; // 1152 pixels
-    final int screenHeight = tileSize * maxScreenRow; // 864 pixels
+    public final int tileSize = originalTileSize * scale; // 72x72 tile
+    private final int maxScreenCol = 16;
+    private final int maxScreenRow = 12;
+    private final int screenWidth = tileSize * maxScreenCol; // 1152 pixels
+    private final int screenHeight = tileSize * maxScreenRow; // 864 pixels
 
     // FPS
     int FPS = 30;
 
     KeyHandler keyHandler = new KeyHandler();
     Thread gameThread;
+    Player player = new Player(this, keyHandler);
+
 
     // Set player's default position
     int playerX = 100;
@@ -76,19 +81,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update(){
-
-        if(keyHandler.upPressed == true) {
-            playerY -= playerSpeed;
-        }
-        else if (keyHandler.downPressed == true) {
-            playerY += playerSpeed;
-        }
-        else if (keyHandler.leftPressed == true) {
-            playerX -= playerSpeed;
-        }
-        else if(keyHandler.rightPressed == true) {
-            playerX += playerSpeed;
-        }
+        player.update();
     }
 
     public void paintComponent(Graphics g) {
@@ -96,9 +89,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g;
 
-        g2.setColor(Color.white);
-
-        g2.fillRect(playerX, playerY, tileSize, tileSize);
+        player.draw(g2);
 
         g2.dispose();
     }
