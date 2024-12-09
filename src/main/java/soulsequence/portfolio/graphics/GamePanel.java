@@ -12,9 +12,8 @@ public class GamePanel extends JPanel implements Runnable {
     private static final Logger LOGGER = Logger.getLogger(GamePanel.class.getName());
 
     // SCREEN SETTINGS
-    private final int originalTileSize = 36; // 16x16 tile
-    private final int scale = 2;
-
+    private final int originalTileSize = 16; // 16x16 tile
+    private final int scale = 3;
     public final int tileSize = originalTileSize * scale; // 72x72 tile
     private final int maxScreenCol = 16;
     private final int maxScreenRow = 12;
